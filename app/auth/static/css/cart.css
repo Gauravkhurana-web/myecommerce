@@ -1,0 +1,181 @@
+#nav-header
+{
+padding:10px;
+background-color:black;
+}
+
+#head
+{
+color:white;
+background-color:black;
+margin-left:40px;
+margin-top:5px;
+padding:0px 20px;
+}
+#head:hover
+{
+color:black;
+background-color:white;
+}
+
+#navform
+{
+margin-left:350px;
+}
+
+#navform-input
+{
+width:300px;
+}
+.containerr
+{
+padding-left:500px;
+box-sizing:border-box;
+display:flex;
+flex-wrap:wrap;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.child
+{
+ width:40%;
+ margin:20px;
+ border:1px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding-bottom:30px;
+}
+
+.child:hover
+{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.prod-det
+{
+display:flex;
+flex-wrap:wrap:
+}
+.qty
+{
+margin-left:80px;
+}
+.remove-button,.placeorder-button
+{
+ background-color:black;
+ color:white;
+ padding:10px 40px;
+}
+.remove-button:hover
+{
+background-color:white;
+ color:black;
+}
+
+.desc
+{
+padding-left:15px;
+}
+
+.desc-p
+{
+padding:5px;
+}
+
+.cart-price
+{
+margin-left:37%;
+display:flex;
+flex-direction:row;
+justify-content:space-between;
+width:25%;
+}
+
+#placeorder
+{
+padding:8px 148px;
+background-color:black;
+color:white;
+margin:10px 0px 50px 520px;
+}
+
+#placeorder:hover
+{
+background-color:white;
+color:black;
+}
+
+
+.elseblock
+{
+height:700px;
+width:1124px:
+border:10px solid black;
+}
+
+#elsesubbtn
+{
+padding:15px 10px;
+background-color:black;
+color:white;
+margin-left:670px;
+margin-top:20px;
+}
+
+
+
+
+
+
+
+
+.footer
+{
+padding:40px;
+display:flex;
+flex-direction:row;
+flex-wrap:wrap;
+background-color:black;
+border-bottom: 0.2px solid white;
+}
+.footer > div
+{
+margin-left:2%;
+}
+
+ul
+{
+list-style:none;
+}
+
+.footer-li
+{
+color:white;
+}
+.footer-li:hover
+{
+color:white;
+}
+
+
+li + li
+{
+padding-top:5px;
+flex-direction:row;
+}
+
+
+.footer-two
+{
+display:flex;
+background-color:black;
+color:white;
+justify-content:space-around;
+padding:20px;
+}
+
+.footer-li-first
+{
+color:grey;
+}

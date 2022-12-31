@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">   <!--BootStrap-->
+      <link rel="stylesheet" href="static/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Favicon-->
+    <title>Login Page</title>
+     <style>
+        input[type=text],input[type=password]
+        {
+        width:60%;
+        border:2px black solid;
+        }
+        .content-section
+        {
+        margin:20px auto;
+        width:40%;
+        border:10px black solid;
+        padding:20px 0px 0px 40px;
+         box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<h1 id="head" >Hype-Beast<sup>TM</sup></h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+       {% endif %}
+{% endwith %}
+
+
+  <div class="content-section">
+        <form method="POST" action="/login">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback err">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback err">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+              <!--  <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>-->
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        <!--    <small class="text-muted ml-2">
+                <a href="#">Forgot Password?</a>
+            </small>-->
+        </form>
+      <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('auth.signup') }}">Sign Up Now</a>
+        </small>
+    </div>
+    <hr>
+   <div class ="favicon">
+    <a href="#" class="fa fa-google"></a>
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-instagram"></a>
+  </div>
+  </div>
+
+
+
+</body>
+</html>

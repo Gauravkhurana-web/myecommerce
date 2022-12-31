@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Index Page</title>
+     <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--
+-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+       {% endif %}
+{% endwith %}
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid" id="nav-header">
+    <div class="navbar-header" id="head">
+    <!--  <a class="navbar-brand" href="#"><h5>HypeBeast<sup>TM</sup></h5></a>-->
+     <h4>Hype-Beast<sup>TM</sup></h4>
+    </div>
+
+      <form class="navbar-form navbar-left" id="navform"    action="/search">
+      <div class="form-group">
+        <input type="text" class="form-control" id="navform-input"  name="q" placeholder="Search for products,brands and more" >
+      </div>
+      <button type="submit" class="btn btn-default" >Submit</button>
+     </form>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+      <li><a href="/myorder"><span class="glyphicon glyphicon-shopping-cart"></span> MyOrder</a></li>
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{name}}</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+   {% for row in rows  %}
+    <div class="child">
+        <img src={{row["img_src"]}} width="100%" height="350px">
+        <div class="desc">
+                 <h4>{{row["title"]}}</h4>
+                 <p> {{row["descript"]}}</p>
+                 <h2>&#8377<span>{{ row["price"]}}</span></h2>
+              <!--<input type="button" value="Add To Bag" class="add-button" onClick="displayMessage('{{row['id']}}')" /><br>     Passing unique id-->
+                  <input type="button" value="Add To Bag" class="add-button" onClick="AddToBag('{{row['ID']}}','{{row['prod_id']}}')" /><br>
+                 <p class="desc-p">{{ row["type_del"]}}</p>
+                 <p class="desc-p">{{ row["ID"]}}</p>
+        </div>
+    </div>
+   {% endfor %}
+</div>
+
+
+
+   <div class="paginate">
+     {% for n in range(maxpage) %}
+
+        <a href='/?page={{n}}'> {{ n }} </a>
+
+     {% endfor %}
+   </div>
+
+<footer>
+<div class="footer">
+    <div>
+        <ul >
+            <li><a href="#" class="footer-li footer-li-first">About </a></li>
+            <li><a href="#" class="footer-li">Contact Us</a></li>
+            <li><a href="#" class="footer-li">About Us</a></li>
+            <li><a href="#" class="footer-li">Career</a></li>
+            <li><a href="#" class="footer-li">Hypebeast Stories</a></li>
+            <li><a href="#" class="footer-li">Corporate Information</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#" class="footer-li footer-li-first">Help </a></li>
+            <li><a href="#" class="footer-li">Payment</a></li>
+            <li><a href="#" class="footer-li">Shipping</a></li>
+            <li><a href="#" class="footer-li">Cancellation & Returns</a></li>
+            <li><a href="#" class="footer-li">FAQ</a></li>
+            <li><a href="#" class="footer-li">Report Infrigment</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#" class="footer-li footer-li-first">Policy </a></li>
+            <li><a href="#" class="footer-li">Return Policy</a></li>
+            <li><a href="#" class="footer-li">terms of Use</a></li>
+            <li><a href="#" class="footer-li">Security</a></li>
+            <li><a href="#" class="footer-li">Privacy</a></li>
+            <li><a href="#" class="footer-li">Sitemap</a></li>
+            <li><a href="#" class="footer-li">EPR Compliance</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#" class="footer-li footer-li-first">Social </a></li>
+            <li><a href="#" class="footer-li">Facebook</a></li>
+            <li><a href="#" class="footer-li">Instagram</a></li>
+            <li><a href="#" class="footer-li">Twitter</a></li>
+        </ul>
+    </div>
+     <div>
+     </div>
+    <div>
+     </div>
+    <div>
+        <ul>
+            <li><a href="#" class="footer-li footer-li-first">Mail Us:</a></li>
+            <li><a href="#" class="footer-li">Hypebeast Private Limited</a></li>
+            <li><a href="#" class="footer-li">The Lave Street,123</a></li>
+            <li><a href="#" class="footer-li">Paris,Europe</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#" class="footer-li footer-li-first">Registered Mobile Address: </a></li>
+            <li><a href="#" class="footer-li">Hypebeast Private Limited</a></li>
+            <li><a href="#" class="footer-li">The Lave Street,123</a></li>
+            <li><a href="#" class="footer-li">Paris,Europe</a></li>
+            <li><a href="#" class="footer-li">Telephone:019-78887888</a></li>
+            <li><a href="#" class="footer-li">CIN : U51109KA2012PTC066107</a></li>
+        </ul>
+    </div>
+</div>
+</footer>
+<div class="footer-two">
+    <div><i class="material-icons" style="font-size:20px">work</i><span>Become a seller</span></div>
+    <div><i class="material-icons" style="font-size:20px">stars</i>Advertise</div>
+    <div><i class="material-icons" style="font-size:20px">redeem</i>Gift cards</div>
+    <div><i class="material-icons" style="font-size:20px">help</i>Help center</div>
+    <div><i class="material-icons" style="font-size:20px">copyright</i>2018-2022 Hype-Beast<sup>TM</sup></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="static/index.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+        function displayMessage(title){
+            console.log(title);
+        }
+
+          function loadDoc(id) {
+          console.log(id);
+                $.ajax({
+        url: "http://127.0.0.1:5000/cart",
+        type: "POST",
+        data: {
+            'id':'ooooopp',
+            'pp':'dfff'
+        },
+        contentType: "application/json",
+        success: function (data) {
+           console.log(ko.toJSON(data));
+        }
+    });
+ }
+
+
+
+     function AddToBag(id,prod_id)
+     {
+      console.log(id,prod_id)
+        $.ajax({
+          type:"POST",
+          url:"/cart",
+          data:{"id":id,"prod_id":prod_id},
+        })
+     }
+    </script>
+</body>
+</html>
+
+
+
+<!--data:{"name":"jim"},-->
